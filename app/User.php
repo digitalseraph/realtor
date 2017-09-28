@@ -4,10 +4,19 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use HasRoles;
+
+    /**
+     * The guard used by this model
+     *
+     * @var string
+     */
+    protected $guard_name = 'web';
 
     /**
      * The attributes that are mass assignable.
@@ -26,4 +35,24 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Check if admin
+     *
+     * @return boolean
+     */
+    public function isAdmin()
+    {
+        return false;
+    }
+
+    /**
+     * Check if user
+     *
+     * @return boolean
+     */
+    public function isUser()
+    {
+        return true;
+    }
 }

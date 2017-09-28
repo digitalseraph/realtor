@@ -3,7 +3,34 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
 
 // Variables
-@import "variables";
+// @import "variables";
+
+// Bootswatch Variables for your chosen theme
+@import "~bootswatch/flatly/variables";
 
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
+
+// Bootswatch theme main CSS files
+@import "~bootswatch/flatly/bootswatch";
+
+$color-red: #E74C3C;
+
+/**
+ * Forms
+ */
+
+// Form Elements
+form {
+    label {
+        // Add asterisks to required labels on forms
+        &.required {
+            &:after{ 
+                content:'*'; 
+                color: $color-red; 
+                padding-left:5px;
+                font-weight: bold;
+            }
+        }
+    }
+}
