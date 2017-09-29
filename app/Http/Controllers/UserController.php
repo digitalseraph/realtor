@@ -5,15 +5,18 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Http\Requests\StoreUser;
 use App\Http\Requests\UpdateUser;
-use App\DataTables\UsersDataTable;
 use Illuminate\Http\Request;
 use DataTables;
+use App\DataTables\UsersDataTable;
 use Yajra\DataTables\Html\Builder;
 
 class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
+     *
+     * @param  \App\DataTables\UsersDataTable  $dataTable
+     * @param  \Yajra\DataTables\Html\Builder  $builder
      *
      * @return \Illuminate\Http\Response
      */
@@ -50,6 +53,9 @@ class UserController extends Controller
         $user->fill($request->all());
         $user->password = bcrypt($request->password);
         $user->save();
+
+        // Assign default roles
+        $user->assignRole('user');
 
         return redirect()->route('admin.users.index');
     }
@@ -126,7 +132,7 @@ class UserController extends Controller
                                 <i class="glyphicon glyphicon-eye-open"></i> View
                             </a>
                             <a href="' . route('admin.users.edit', ['user' => $user->id]) . '" 
-                                    class="btn btn-xs btn-warning" title="View User">
+                                    class="btn btn-xs btn-warning" title="Edit User">
                                 <i class="glyphicon glyphicon-edit"></i> Edit
                             </a>
                         </div>

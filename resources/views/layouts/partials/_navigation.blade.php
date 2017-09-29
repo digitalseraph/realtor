@@ -1,4 +1,4 @@
-<nav class="navbar @if(Auth::guard('admin')->check()) navbar-inverse @else navbar-default @endif navbar-static-top">
+<nav class="navbar @hasanyrole('super_admin|admin', 'admin') navbar-inverse @else navbar-default @endhasanyrole navbar-static-top">
     <div class="container">
         <div class="navbar-header">
 
@@ -12,11 +12,20 @@
 
             <!-- Branding Image -->
             <a class="navbar-brand" href="{{ url('/') }}">
-                @if(Auth::guard('admin')->check())
-                    {{ config('app.name', 'Laravel') }}: Admin
+                
+                @hasanyrole('super_admin|admin', 'admin')
+                    @role('super_admin', 'admin')
+                        {{ config('app.name', 'Laravel') }} SuperAdmin
+                    @else
+                        {{ config('app.name', 'Laravel') }} Admin
+                    @endrole
                 @else
-                    {{ config('app.name', 'Laravel') }}
-                @endif
+                    @role('user', 'web')
+                        {{ config('app.name', 'Laravel') }} User
+                    @else
+                        {{ config('app.name', 'Laravel') }}
+                    @endrole
+                @endhasanyrole
             </a>
         </div>
 

@@ -1,11 +1,11 @@
 @php
-    $user = (isset($user)) ? $user : null;
+    $admin = (isset($admin)) ? $admin : null;
 
     $routeName = Route::currentRouteName();
     
     $showPasswordFields = false;
     
-    if($routeName == 'admin.users.create') {
+    if($routeName == 'admin.admins.create') {
         $showPasswordFields = true;
     }
 @endphp
@@ -57,13 +57,13 @@
     </div>
 @endif
 
-@if($user)
+@if($admin)
     <div class="row">
         <div class="col-md-3 col-md-offset-3">
             <div class="form-group">
                 {!! Form::label('roles', 'Roles') !!}
                 <ul>
-                    @foreach ($user->getRoleNames() as $role)
+                    @foreach ($admin->getRoleNames() as $role)
                         <li>{{ $role }}</li>
                     @endforeach
                 </ul>
@@ -73,7 +73,7 @@
             <div class="form-group">
                 {!! Form::label('permissions', 'Permissions') !!}
                 <ul>
-                    @foreach ($user->getAllPermissions() as $perm)
+                    @foreach ($admin->getAllPermissions() as $perm)
                         <li>{{ $perm->guard_name . " | " . $perm->name }}</li>
                     @endforeach
                 </ul>

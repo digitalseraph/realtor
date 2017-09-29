@@ -6,7 +6,7 @@
         <li><a href="{{ route('admin.login') }}">Admin Login</a></li>
     @else
 
-        @if(Auth::guard('admin')->check())
+        @hasanyrole('super_admin|admin', 'admin')
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                     {{ Auth::guard('admin')->user()->name }} (admin) <span class="caret"></span>
@@ -26,7 +26,8 @@
                     </li>
                 </ul>
             </li>
-        @elseif(Auth::guard('web')->check())
+        @endhasanyrole
+        @hasanyrole('user', 'web')
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                     {{ Auth::guard('web')->user()->name }} <span class="caret"></span>
@@ -46,6 +47,6 @@
                     </li>
                 </ul>
             </li>
-        @endif
+        @endhasanyrole
     @endguest
 </ul>
