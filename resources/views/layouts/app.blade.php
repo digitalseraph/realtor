@@ -10,14 +10,11 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Styles -->
-    <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
-
     <!-- Stack for in-page css -->
     @stack('pre-styles')
 
     <!-- Styles -->
-    <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
+    <link href="{{ mix('/css/all.css') }}" rel="stylesheet">
 
     <!-- Stack for in-page css -->
     @stack('post-styles')
@@ -42,7 +39,9 @@
     @stack('pre-scripts')
 
     <!-- Scripts -->
-    <script src="{{ mix('/js/app.js') }}"></script>
+    <script src="{{ mix('/js/manifest.js') }}"></script>
+    <script src="{{ mix('/js/vendor.js') }}"></script>
+    <script src="{{ mix('/js/all.js') }}"></script>
 
     <!-- Stack for in-page scripts -->
     @stack('post-scripts')

@@ -13,10 +13,48 @@ let mix = require('laravel-mix');
 
 require('dotenv').config();
 
-mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css')
-   .browserSync({
-        proxy: process.env.APP_URL
+mix
+    /**
+     * Copy Assets
+     */
+    .copy('node_modules/font-awesome/fonts', 'public/fonts')
+
+    /**
+     * Scripts
+     */
+    // App Scripts
+    .js('resources/assets/js/app.js', 'public/js')
+    .scripts([
+        'public/js/app.js'
+    ], 'public/js/all.js')
+    // Admin Scripts
+    .js('resources/assets/js/app-admin.js', 'public/js')
+    .scripts([
+        'public/js/app-admin.js',
+        'node_modules/admin-lte/dist/js/adminlte.min.js'
+    ], 'public/js/all-admin.js')
+
+    .extract(['vue'])
+
+    /**
+     * Styles
+     */
+    // App Styles
+    .sass('resources/assets/sass/app.scss', 'public/css')
+    .styles([
+        'public/css/app.css'
+    ], 'public/css/all.css')
+    // Admin Styles
+    .sass('resources/assets/sass/app-admin.scss', 'public/css')
+    .styles([
+        'public/css/app-admin.css'
+    ], 'public/css/all-admin.css')
+
+    /**
+     * Miscellaneous Configurations
+     */
+    .browserSync({
+    proxy: process.env.APP_URL
     })
-   .sourceMaps()
-   .version();
+    .sourceMaps()
+    .version();

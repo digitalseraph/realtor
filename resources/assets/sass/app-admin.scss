@@ -1,0 +1,39 @@
+
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic");
+
+// FontAwesome
+@import "~font-awesome/css/font-awesome.css";
+
+// Variables
+@import "variables-admin";
+
+// Bootstrap
+@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+
+// AdminLTE
+@import "~admin-lte/dist/css/AdminLTE.min.css";
+@import "~admin-lte/dist/css/skins/skin-blue.min.css";
+
+// Mixins
+@import "mixins";
+
+/**
+ * Forms
+ */
+
+// Form Elements
+form {
+    label {
+        // Add asterisks to required labels on forms
+        &.required {
+            &:after{ 
+                content:'*'; 
+                color: $color-red; 
+                padding-left:5px;
+                font-weight: bold;
+            }
+        }
+    }
+}
