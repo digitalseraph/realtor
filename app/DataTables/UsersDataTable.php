@@ -67,7 +67,9 @@ class UsersDataTable extends DataTable
     {
         return [
             'id',
-            'name',
+            'first_name',
+            'last_name',
+            'username',
             'email',
             'created_at',
             'updated_at',

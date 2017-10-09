@@ -17,8 +17,18 @@ class RedirectIfAdmin
      */
     public function handle($request, Closure $next, $guard = 'admin')
     {
-        if (Auth::guard($guard)->check()) {
-            return route('admin.home');
+        switch ($guard) {
+            case 'web':
+                if (Auth::guard($guard)->check()) {
+                    return redirect()->route('home');
+                }
+                break;
+
+            default:
+                if (Auth::guard($guard)->check()) {
+                    return redirect()->route('admin.home');
+                }
+                break;
         }
 
         return $next($request);

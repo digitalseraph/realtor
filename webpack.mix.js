@@ -18,6 +18,7 @@ mix
      * Copy Assets
      */
     .copy('node_modules/font-awesome/fonts', 'public/fonts')
+    .copy('node_modules/admin-lte/dist/img', 'public/assets/vendor/admin-lte/img')
 
     /**
      * Scripts
@@ -31,7 +32,8 @@ mix
     .js('resources/assets/js/app-admin.js', 'public/js')
     .scripts([
         'public/js/app-admin.js',
-        'node_modules/admin-lte/dist/js/adminlte.min.js'
+        'node_modules/admin-lte/dist/js/adminlte.min.js',
+        'node_modules/admin-lte/plugins/iCheck/icheck.min.js'
     ], 'public/js/all-admin.js')
 
     .extract(['vue'])
@@ -47,7 +49,8 @@ mix
     // Admin Styles
     .sass('resources/assets/sass/app-admin.scss', 'public/css')
     .styles([
-        'public/css/app-admin.css'
+        'public/css/app-admin.css',
+        'node_modules/admin-lte/plugins/iCheck/all.css'
     ], 'public/css/all-admin.css')
 
     /**

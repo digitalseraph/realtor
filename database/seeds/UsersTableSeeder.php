@@ -20,7 +20,9 @@ class UsersTableSeeder extends Seeder
 
         // Default User
         $user = new User;
-        $user->name = env('DEV_USER_FIRSTNAME', $faker->firstName) . ' ' . env('DEV_USER_LASTNAME', $faker->lastName);
+        $user->first_name = env('DEV_USER_FIRSTNAME', $faker->firstName);
+        $user->last_name = env('DEV_USER_LASTNAME', $faker->lastName);
+        $user->username = env('DEV_USER_USERNAME', $faker->userName);
         $user->email = env('DEV_USER_EMAIL', $faker->unique()->safeEmail);
         $user->password = bcrypt(env('DEV_USER_PASSWORD', $faker->password));
         $user->save();

@@ -20,7 +20,9 @@ class AdminsTableSeeder extends Seeder
 
         // Default Admin
         $admin = new Admin;
-        $admin->name = env('DEV_ADMIN_FIRSTNAME', $faker->firstName) . ' ' . env('DEV_ADMIN_LASTNAME', $faker->lastName);
+        $admin->first_name = env('DEV_ADMIN_FIRSTNAME', $faker->firstName);
+        $admin->last_name = env('DEV_ADMIN_LASTNAME', $faker->lastName);
+        $admin->username = env('DEV_ADMIN_USERNAME', $faker->userName);
         $admin->email = env('DEV_ADMIN_EMAIL', $faker->unique()->safeEmail);
         $admin->password = bcrypt(env('DEV_ADMIN_PASSWORD', $faker->password));
         $admin->save();

@@ -27,7 +27,9 @@ class UpdateAdmin extends FormRequest
         $admin = $this->route('admin');
 
         return [
-            'name'      => 'required|string|max:255',
+            'first_name'      => 'required|string|max:255',
+            'last_name'      => 'required|string|max:255',
+            'username'     => 'required|string|max:255|unique:admins,username,' . $admin->id,
             'email'     => 'required|string|email|max:255|unique:admins,email,' . $admin->id,
             'password'  => 'required|string|min:6|confirmed',
         ];

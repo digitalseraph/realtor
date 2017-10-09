@@ -26,44 +26,29 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition lockscreen">
     <div id="app-admin">
 
-        {{-- @include('layouts.partials._navigation') --}}
+        <!-- Automatic element centering -->
+        <div class="lockscreen-wrapper">
+            <div class="lockscreen-logo">
+                <a href="{{ route('welcome') }}"><b>{{ config('app.name', 'Laravel') }}</b>Admin</a>
+            </div>
 
-        <div class="wrapper">
+            @yield('content')
 
-          <!-- Main Header -->
-          @include('layouts.admin-lte.partials._header')
-
-          <!-- Left side column. contains the logo and sidebar -->
-          @include('layouts.admin-lte.partials._sidebar')
-
-          <!-- Content Wrapper. Contains page content -->
-          <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            @include('layouts.admin-lte.partials._page-header')
-
-            <!-- Main content -->
-            <section class="content container-fluid">
-
-                @yield('content')
-
-                @include('debug')
-
-            </section>
-            <!-- /.content -->
-          </div>
-          <!-- /.content-wrapper -->
-
-          <!-- Main Footer -->
-          @include('layouts.admin-lte.partials._footer')
-
-          <!-- Control Sidebar -->
-          @include('layouts.admin-lte.partials._sidebar-control')
-          
+            <div class="help-block text-center">
+                Enter your password to retrieve your session
+            </div>
+            <div class="text-center">
+                <a href="{{ route('admin.login') }}">Or sign in as a different user</a>
+            </div>
+            <div class="lockscreen-footer text-center">
+                <strong>Copyright &copy; {{ date('Y') }} <a href="#">Company</a>.</strong><br />
+                All rights reserved.
+            </div>
         </div>
-        <!-- ./wrapper -->
+        <!-- /.center -->
 
     </div>
     <!-- #app-admin -->

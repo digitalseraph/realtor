@@ -13,12 +13,15 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/admin/lockscreen', 'AdminController@showLockscreen')
+    // ->middleware('admin.lockscreen')
+    ->name('admin.lockscreen');
+Route::post('/admin/unlockscreen', 'AdminController@unlockscreen')
+    ->name('admin.unlockscreen');
 /**
  * User Routes
  */
@@ -37,6 +40,8 @@ $this->get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm'
 $this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 $this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 $this->post('password/reset', 'Auth\ResetPasswordController@reset');
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 /**
  * Admin Routes

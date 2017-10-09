@@ -26,44 +26,10 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition login-page">
     <div id="app-admin">
 
-        {{-- @include('layouts.partials._navigation') --}}
-
-        <div class="wrapper">
-
-          <!-- Main Header -->
-          @include('layouts.admin-lte.partials._header')
-
-          <!-- Left side column. contains the logo and sidebar -->
-          @include('layouts.admin-lte.partials._sidebar')
-
-          <!-- Content Wrapper. Contains page content -->
-          <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            @include('layouts.admin-lte.partials._page-header')
-
-            <!-- Main content -->
-            <section class="content container-fluid">
-
-                @yield('content')
-
-                @include('debug')
-
-            </section>
-            <!-- /.content -->
-          </div>
-          <!-- /.content-wrapper -->
-
-          <!-- Main Footer -->
-          @include('layouts.admin-lte.partials._footer')
-
-          <!-- Control Sidebar -->
-          @include('layouts.admin-lte.partials._sidebar-control')
-          
-        </div>
-        <!-- ./wrapper -->
+        @yield('content')
 
     </div>
     <!-- #app-admin -->

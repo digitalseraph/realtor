@@ -3,7 +3,9 @@
     <div class="row">
         <div class="col-md-12">
             <div class="well">
-                <i class="fa fa-link"></i>
+                
+                <!-- Stack for in-page scripts -->
+                @stack('debug')
             </div>
         </div>
     </div>

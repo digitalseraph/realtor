@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Admin;
 use App\Http\Requests\StoreAdmin;
 use App\Http\Requests\UpdateAdmin;
@@ -148,5 +149,55 @@ class AdminController extends Controller
             // ->editColumn('id', 'ID: {{$id}}')
             // ->removeColumn('password')
             ->make(true);
+    }
+
+    /**
+     * Show the admin lockscreen
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showLockscreen(Request $request)
+    {
+        if(Auth::guard('admin')->check()) {
+            $id = Auth::guard('admin')->id();
+            $savedUrl = url()->previous();
+            Auth::guard('admin')->logout();
+            \Session::put('locked', true);
+        } else {
+            $id = $request->id;
+            $savedUrl = $request->savedUrl;
+        }
+
+        return view('admin.auth.lockscreen')
+            ->with('id', $id)
+            ->with('savedUrl', $savedUrl);
+    }
+
+    /**
+     * Unlock the admin screen and return user to previous page
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function unlockscreen(Request $request)
+    {
+        $request->validate([
+            'id' => 'required',
+            'password' => 'required',
+            'savedUrl' => 'required',
+        ]);
+
+        $id = $request->id;
+        $email = Admin::find($id)->email;
+        $password = $request->password;
+        $savedUrl = $request->savedUrl;
+
+        if (Auth::guard('admin')->attempt(['email' => $email, 'password' => $password ])) {
+            \Session::forget('locked');
+            return redirect()->intended($savedUrl);
+        }
+
+        return view('admin.auth.lockscreen')
+            ->with('id', $id)
+            ->with('savedUrl', $savedUrl);
     }
 }

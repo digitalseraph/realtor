@@ -16,12 +16,30 @@
     </div>
 </div>
 <div class="row">
+    <div class="col-md-3 col-md-offset-3">
+        <div class="form-group">
+            {!! Form::label('first_name', 'First Name', ['class' => 'required']) !!}
+            {!! Form::text('first_name', null, ['class' => 'form-control required', 'placeholder' => 'John']) !!}
+
+            @component('layouts.partials.form.error-field', ['field' => 'first_name']) @endcomponent
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group">
+            {!! Form::label('last_name', 'Last Name', ['class' => 'required']) !!}
+            {!! Form::text('last_name', null, ['class' => 'form-control required', 'placeholder' => 'Smith']) !!}
+
+            @component('layouts.partials.form.error-field', ['field' => 'last_name']) @endcomponent
+        </div>
+    </div>
+</div>
+<div class="row">
     <div class="col-md-6 col-md-offset-3">
         <div class="form-group">
-            {!! Form::label('name', 'Name', ['class' => 'required']) !!}
-            {!! Form::text('name', null, ['class' => 'form-control required', 'placeholder' => 'John Smith']) !!}
+            {!! Form::label('username', 'Username', ['class' => 'required']) !!}
+            {!! Form::text('username', null, ['class' => 'form-control required', 'placeholder' => 'johnsmith01']) !!}
 
-            @component('layouts.partials.form.error-field', ['field' => 'name']) @endcomponent
+            @component('layouts.partials.form.error-field', ['field' => 'username']) @endcomponent
         </div>
     </div>
 </div>
