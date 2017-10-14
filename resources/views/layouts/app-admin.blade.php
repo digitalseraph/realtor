@@ -30,7 +30,6 @@
     <div id="app-admin">
 
         {{-- @include('layouts.partials._navigation') --}}
-
         <div class="wrapper">
 
           <!-- Main Header -->
