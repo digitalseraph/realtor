@@ -7,6 +7,7 @@ public/storage
 public/hot
 public/fonts/**
 public/fonts/vendor/**
+public/assets/**
 public/css/*
 public/js/*
 public/mix-manifest.json
@@ -14,6 +15,7 @@ storage/*.key
 .env.*.php
 .env.php
 .env
+.fuse*
 
 Homestead.json
 Homestead.yaml
