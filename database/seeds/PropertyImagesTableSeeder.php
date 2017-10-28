@@ -11,6 +11,7 @@ class PropertyImagesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Models\PropertyImage::class, 200)->create();
+        $amount = (int) env('DEV_SEED_PROPERTY_IMAGES', 10);
+        factory(App\Models\PropertyImage::class, $amount)->create();
     }
 }

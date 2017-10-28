@@ -56,9 +56,6 @@
 </div>
 @endsection
 
-@push('pre-styles')
-@endpush
-
 @push('post-scripts')
 <script type="text/javascript">
     (function() {

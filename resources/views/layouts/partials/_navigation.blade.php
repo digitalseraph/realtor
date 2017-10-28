@@ -14,17 +14,9 @@
             <a class="navbar-brand" href="{{ url('/') }}">
                 
                 @hasanyrole('super_admin|admin', 'admin')
-                    @role('super_admin', 'admin')
-                        {{ config('app.name', 'Laravel') }} SuperAdmin
-                    @else
-                        {{ config('app.name', 'Laravel') }} Admin
-                    @endrole
+                    {{ config('app.name', 'Laravel') }} Admin
                 @else
-                    @role('user', 'web')
-                        {{ config('app.name', 'Laravel') }} User
-                    @else
-                        {{ config('app.name', 'Laravel') }}
-                    @endrole
+                    {{ config('app.name', 'Laravel') }}
                 @endhasanyrole
             </a>
         </div>

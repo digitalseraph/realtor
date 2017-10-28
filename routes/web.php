@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages-frontend.welcome');
 })->name('welcome');
 
 
@@ -42,6 +42,10 @@ $this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm
 $this->post('password/reset', 'Auth\ResetPasswordController@reset');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/pages/data', 'PageController@dataFrontend')->name('pages.data');
+Route::get('/page/{page}', 'HomeController@showPage')->name('pages.show');
+Route::get('/pages', 'HomeController@showPagesIndex')->name('pages.index');
 
 /**
  * Admin Routes

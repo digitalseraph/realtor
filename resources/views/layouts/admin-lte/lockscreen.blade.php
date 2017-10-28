@@ -14,7 +14,7 @@
     @stack('pre-styles')
 
     <!-- Styles -->
-    <link href="{{ mix('/css/all-admin.css') }}" rel="stylesheet">
+    <link href="{{ mix('/assets/css/all-admin.css') }}" rel="stylesheet">
 
     <!-- Stack for in-page css -->
     @stack('post-styles')
@@ -57,9 +57,9 @@
     @stack('pre-scripts')
 
     <!-- Scripts -->
-    <script src="{{ mix('/js/manifest.js') }}"></script>
-    <script src="{{ mix('/js/vendor.js') }}"></script>
-    <script src="{{ mix('/js/all-admin.js') }}"></script>
+    <script src="{{ mix('/assets/js/manifest.js') }}"></script>
+    <script src="{{ mix('/assets/js/vendor.js') }}"></script>
+    <script src="{{ mix('/assets/js/all-admin.js') }}"></script>
 
     <!-- Stack for in-page scripts -->
     @stack('post-scripts')

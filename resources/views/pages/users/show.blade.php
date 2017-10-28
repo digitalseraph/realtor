@@ -41,9 +41,3 @@
     {!! Form::close() !!}
 </div>
 @endsection
-
-@push('pre-styles')
-@endpush
-
-@push('post-scripts')
-@endpush

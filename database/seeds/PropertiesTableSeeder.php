@@ -11,6 +11,7 @@ class PropertiesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Models\Property::class, 50)->create();
+        $amount = (int) env('DEV_SEED_PROPERTIES', 10);
+        factory(App\Models\Property::class, $amount)->create();
     }
 }

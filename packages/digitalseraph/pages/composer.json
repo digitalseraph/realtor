@@ -1,0 +1,60 @@
+{
+    "name": "digitalseraph/pages",
+    "type": "library",
+    "description": "Laravel 5 package for creating pages",
+    "keywords": [
+        "digitalseraph",
+        "pages",
+        "laravel5"
+    ],
+    "homepage": "https://github.com/digitalseraph/pages",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "David Miller",
+            "email": "davidmiller.avatar@gmail.com",
+            "homepage": "http://digitalseraph.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php" : "~5.6|~7.0",
+        "illuminate/database": "5.1.20 - 5.5",
+        "illuminate/support": "5.1.20 - 5.5"
+    },
+    "require-dev": {
+        "phpunit/phpunit" : "~4.0||~5.0",
+        "orchestra/testbench": "~3.1",
+        "mockery/mockery": "^0.9.4",
+        "squizlabs/php_codesniffer": "^2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "DigitalSeraph\\Pages\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "DigitalSeraph\\Pages\\Tests": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "check-style": "phpcs -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests",
+        "fix-style": "phpcbf -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests"
+    },
+    "minimum-stability": "dev",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        },
+        "laravel": {
+            "providers": [
+                "DigitalSeraph\\Pages\\PagesServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
