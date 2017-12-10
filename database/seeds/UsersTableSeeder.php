@@ -13,7 +13,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         // Faker Intance
-        $faker = Faker\Factory::create();
+        $faker = \Faker\Factory::create();
 
         // Add the developer accounts and print this out at the end
         $loginsArray = [];
